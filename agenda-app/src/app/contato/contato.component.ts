@@ -26,7 +26,7 @@ export class ContatoComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.formulario.value)
+
     //this.service.save(c).subscribe( reposta => {
     //  console.log();
     //})

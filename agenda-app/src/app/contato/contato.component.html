@@ -10,5 +10,5 @@
         <input formControlName="email" matInput placeholder="Digite o email do contato">
     </mat-form-field>
 
-    <button mat-button color="primary">Adicionar</button>
+    <button [disabled]="!formulario.valid" mat-button color="primary">Adicionar</button>
 </form>
