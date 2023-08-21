@@ -1,14 +1,24 @@
 <mat-toolbar>Contatos</mat-toolbar>
-<form [formGroup]="formulario" (ngSubmit)="submit()">
-    <mat-form-field class="full-width">
-        <mat-label>Nome:</mat-label>
-        <input formControlName="nome" matInput placeholder="Digite o nome do contato">
-    </mat-form-field>
 
-    <mat-form-field class="full-width">
-        <mat-label>Email:</mat-label>
-        <input formControlName="email" matInput placeholder="Digite o email do contato">
-    </mat-form-field>
+<mat-tab-group>
+    <mat-tab label="Todos"></mat-tab>
+    <mat-tab label="Novo">
+        <mat-card class="half-width">
+            <mat-card-title>Novo Contato</mat-card-title>
+            <form [formGroup]="formulario" (ngSubmit)="submit()">
+                <mat-form-field class="full-width">
+                    <mat-label>Nome:</mat-label>
+                    <input formControlName="nome" matInput placeholder="Digite o nome do contato">
+                </mat-form-field>
+            
+                <mat-form-field class="full-width">
+                    <mat-label>Email:</mat-label>
+                    <input formControlName="email" matInput placeholder="Digite o email do contato">
+                </mat-form-field>
+            
+                <button [disabled]="!formulario.valid" mat-button color="primary">Adicionar</button>
+            </form>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>
 
-    <button [disabled]="!formulario.valid" mat-button color="primary">Adicionar</button>
-</form>
