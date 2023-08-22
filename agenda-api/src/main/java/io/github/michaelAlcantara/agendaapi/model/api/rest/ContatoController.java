@@ -4,6 +4,8 @@ import io.github.michaelAlcantara.agendaapi.model.entity.Contato;
 import io.github.michaelAlcantara.agendaapi.model.repository.ContatoRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +36,10 @@ public class ContatoController {
     }
 
     @GetMapping
-    public List<Contato> list(){
-        return repository.findAll();
+    public Page<Contato> list( @RequestParam(value = "page", defaultValue = "0") Integer pagina,
+                               @RequestParam( value ="size", defaultValue = "10") Integer tamanhoPagina){
+        PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina);
+        return repository.findAll(pageRequest);
     }
 
     //Fazer uma atualização pacial
