@@ -28,6 +28,6 @@ export class ContatoService {
   }
 
   upload(contato : Contato, formData : FormData) : Observable<any>{
-    return this.http.put(`${this.url}/${contato.id}/foto`, formData);
+    return this.http.put(`${this.url}/${contato.id}/foto`, formData, { responseType : 'blob'});
   }
 }
